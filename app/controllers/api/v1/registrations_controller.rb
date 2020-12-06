@@ -1,4 +1,5 @@
 class Api::V1::RegistrationsController < Devise::RegistrationsController
+  before_action: :ensure_params_exist, only: :create
 
   # sign up feature
   def create
@@ -24,5 +25,14 @@ class Api::V1::RegistrationsController < Devise::RegistrationsController
 
   def user_params
     params.require(:user).permit(:email, :password, :password_confirmation)
+  end
+
+  def ensure_params_exist 
+    return if params[:user].present?
+    render json: {
+      message: 'Missing params',
+      is_success: false,
+      data: {}
+    }, status: :bad_request
   end
 end
