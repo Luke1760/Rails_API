@@ -43,3 +43,5 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'devise', '~> 4.7', '>= 4.7.3'
 
 gem 'simple_token_authentication', '~> 1.0'
+
+gem 'koala', '~> 3.0'
