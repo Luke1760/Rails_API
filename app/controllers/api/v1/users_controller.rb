@@ -7,7 +7,7 @@ class Api::V1::UsersController < ApplicationController
 
       user = User.find_by(email: user_data[:email])
       if user
-        user.generate_new_authentication_toke
+        user.generate_new_authentication_token
         json_response "User Information", true, {user: user}, :ok
       else
         user = User.new(email: user_data["email"],
